@@ -45,6 +45,7 @@ public class AIOClient {
     public void read(){
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         try{
+            //read方法是异步方法，OS实现。get方法是一个阻塞方法，会等待OS处理结束后再返回
             channel.read(buffer).get();
             buffer.flip();
             System.out.println("from server : "+ new String(buffer.array(),"UTF-8"));
