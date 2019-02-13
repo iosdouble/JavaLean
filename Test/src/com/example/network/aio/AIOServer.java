@@ -16,11 +16,11 @@ import java.util.concurrent.TimeUnit;
  * @Description TODO
  */
 public class AIOServer {
-    //线程池
+    //线程池，提高服务端效率
     private ExecutorService service;
     //线程组
    // private AsynchronousChannelGroup group;
-    //服务端通道
+    //服务端通道,针对服务器端定义的通道
     private AsynchronousServerSocketChannel serverSocketChannel;
 
     public AIOServer(int port){
@@ -31,15 +31,31 @@ public class AIOServer {
 
         try {
             System.out.println("server starting at port ："+port+"....");
+            //定长线程池
             service = Executors.newFixedThreadPool(4);
             //使用线程组
             /*
             group = AsynchronousChannelGroup.withThreadPool(service);
             serverSocketChannel = AsynchronousServerSocketChannel.open();
             */
+            //开启服务端通道，通过静态方法创建的。
             serverSocketChannel = AsynchronousServerSocketChannel.open();
+            //绑定监听端口，服务器启动成功，但是还没有开始监听请求
             serverSocketChannel.bind(new InetSocketAddress(port));
             System.out.println("server started.");
+            //开始监听
+            /**
+             * com.example.network.aio.AIOServer
+             * 描述：AIOServer
+             * 时间：2019/2/13
+             * 作者：nihui
+             * 说明：
+             * accept(A attachment,CompletionHandler<AsynchronousSocketChannel,? super A> handler)
+             *
+             * 在AIO开发中监听是一个类似递归的监听操作，每次监听到客户端请求后，都需要处理逻辑开启下一次监听
+             * 下一次监听需要服务器的资源继续支持。
+             *
+             */
             serverSocketChannel.accept(this,new AIOServerHandler());
             try {
                 TimeUnit.SECONDS.sleep(Integer.MAX_VALUE);
