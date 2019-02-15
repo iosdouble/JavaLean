@@ -26,7 +26,7 @@ public class ServerHelloWorld {
     }
     //初始化
     private void init() {
-        //初始化线程组
+        //初始化线程组 ，构建线程组的时候如果不传入参数，则默认创建为CPU核心的数量
         acceptorGroup = new NioEventLoopGroup();
         clientGroup = new NioEventLoopGroup();
         //初始化配置信息

@@ -18,7 +18,6 @@ public class NIOClient {
         InetSocketAddress remote = new InetSocketAddress("localhost",8081);
         SocketChannel channel = null;
         ByteBuffer buffer = ByteBuffer.allocate(1024);
-
         try{
             //开启通道
             channel = SocketChannel.open();

@@ -1,7 +1,6 @@
 package com.example.network.nio;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.*;
@@ -96,7 +95,6 @@ public class NIOServer implements Runnable{
             }
         }
     }
-
     private void write(SelectionKey key){
         this.writeBuffer.clear();
         SocketChannel channel = (SocketChannel) key.channel();
