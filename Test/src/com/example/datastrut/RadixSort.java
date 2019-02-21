@@ -24,7 +24,6 @@ public class RadixSort implements IArraySort {
         int maxValue = getMaxValue(arr);
         return getNumLenght(maxValue);
     }
-
     private int getMaxValue(int[] arr) {
         int maxValue = arr[0];
         for (int value : arr) {
@@ -34,7 +33,6 @@ public class RadixSort implements IArraySort {
         }
         return maxValue;
     }
-
     protected int getNumLenght(long num) {
         if (num == 0) {
             return 1;
@@ -45,7 +43,6 @@ public class RadixSort implements IArraySort {
         }
         return lenght;
     }
-
     private int[] radixSort(int[] arr, int maxDigit) {
         int mod = 10;
         int dev = 1;
@@ -66,10 +63,8 @@ public class RadixSort implements IArraySort {
                 }
             }
         }
-
         return arr;
     }
-
     private int[] arrayAppend(int[] arr, int value) {
         arr = Arrays.copyOf(arr, arr.length + 1);
         arr[arr.length - 1] = value;
