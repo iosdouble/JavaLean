@@ -15,7 +15,6 @@ public class QuickSort implements IArraySort{
     public int[] sort(int[] sourceArray) throws Exception {
         //
         int[] arr = Arrays.copyOf(sourceArray,sourceArray.length);
-
         return quickSort(arr,0,arr.length-1);
     }
 
