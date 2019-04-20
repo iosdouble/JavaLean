@@ -56,12 +56,14 @@ public class ClientHelloWorld {
     public void release(){
         this.group.shutdownGracefully();
     }
+
     public static void main(String[] args) {
         ClientHelloWorld client = null;
         ChannelFuture future = null;
         try{
             client = new ClientHelloWorld();
             future = client.doRequest("localhost",8081,new ClientHandler());
+            //future = client.doRequest("14.1.76.28",10030,new ClientHandler());
             Scanner scanner = null;
             while (true){
                 scanner = new Scanner(System.in);
