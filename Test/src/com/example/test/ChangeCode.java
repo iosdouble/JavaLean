@@ -30,10 +30,41 @@ public class ChangeCode {
         System.out.println(Integer.toBinaryString(1234));
         System.out.println(Integer.toBinaryString(225));
         System.out.println(Integer.toHexString(1307));
+        String sx = Integer.toHexString(1307);
+        sx = "0x" + sx;
+
+        System.out.println(sx);
+
 
 
         //10011010010
         //   11100001
         //10011001100
+
+        System.out.println((char)60);
+
+        byte b = (byte) 0xAA;
+        System.out.println(b);
+
+        System.out.println();
+
+        System.out.println(toHex(1307));
+
+        byte b1 = (byte)((64 >> 6) & 0xFF);
+        System.out.println(b1);
+
+    }
+
+    public static String toHex(int num){
+        if (num==0){
+            return "0";
+        }
+        String result = "";
+        while (num!=0){
+            int x = num&0xff;
+            result = x+result;
+            num=(num>>>4);
+        }
+        return result;
     }
 }
